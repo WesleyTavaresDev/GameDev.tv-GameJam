@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 369911620}
   - component: {fileID: 369911619}
   - component: {fileID: 369911621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,6 +1569,7 @@ GameObject:
   - component: {fileID: 1181524773}
   - component: {fileID: 1181524772}
   - component: {fileID: 1181524774}
+  - component: {fileID: 1181524775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1693,6 +1694,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 110
+  jumpForce: 250
+  groundCheckLength: 0.65
+--- !u!95 &1181524775
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181524769}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d86c64855137c5647bb7083cd0a11ab6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1338080547
 GameObject:
   m_ObjectHideFlags: 0
