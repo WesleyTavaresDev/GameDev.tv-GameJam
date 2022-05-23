@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         anim.SetBool("Jumping", isJumping);
+        anim.SetFloat("Jump", rb.velocity.y);
         if(Input.GetButtonDown("Jump"))
         {
             if(!isJumping)
