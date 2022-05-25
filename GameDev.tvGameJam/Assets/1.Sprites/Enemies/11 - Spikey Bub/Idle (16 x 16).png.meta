@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77715381fef2f1b45994c0107c9d0007
+guid: 99b868cf091931f48926a73d5e53e48e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hurt (32 x 32)_0
+      name: Idle (16 x 16)_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 1
-        width: 23
-        height: 29
+        x: 2
+        y: 0
+        width: 12
+        height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +118,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d400a7640105cd34ca24555b27adf67f
-      internalID: 1903045511
+      spriteID: 39b5e15b69721314ab887a5353d9452e
+      internalID: 1946934622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (16 x 16)_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 12
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aea2bfef669c56409f192089833c991
+      internalID: 1671264880
       vertices: []
       indices: 
       edges: []
@@ -135,7 +156,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hurt (32 x 32)_0: 1903045511
+      Idle (16 x 16)_0: 1946934622
+      Idle (16 x 16)_1: 1671264880
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

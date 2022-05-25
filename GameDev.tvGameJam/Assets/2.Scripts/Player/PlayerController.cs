@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
+    enum LifeState {Alive, Dead};
+    [SerializeField] private LifeState lifeState;
+    [SerializeField] private Transform blackScreen;
+    
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckLength;
@@ -14,8 +19,10 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    Collider2D coll;
     void Awake()
     {
+        coll = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -23,9 +30,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckGround();
-
-        OnMove();
-        Jump();
+        
+        if(lifeState == LifeState.Alive) {
+            OnMove();
+            Jump();
+        }
     }
 #region Movementation
     #region Move
@@ -76,5 +85,27 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
     }
 
+#endregion
+
+#region Life
+    
+    void OnDie()
+    {
+        lifeState = LifeState.Dead;
+
+        rb.velocity = Vector2.zero;
+        rb.AddForce( new Vector2( (isLookingLeft ? 70 : 70 * -1) * Time.fixedDeltaTime, jumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
+
+        coll.isTrigger = true;
+        anim.SetBool("Dead", true);
+
+      //  blackScreen.DOScale(new Vector3(18, 11, 0), 0.1f);
+    }
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+            OnDie();
+    }
 #endregion
 }
