@@ -5,17 +5,23 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    enum LifeState {Alive, Dead};
-    [SerializeField] private LifeState lifeState;
+    enum PlayerState {Alive, Attacking,Dead};
+    [Header("Life system", order = 1)]
+    [SerializeField] private PlayerState playerState;
     [SerializeField] private Transform blackScreen;
     
+    [Header("Movementation", order = 2)]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckLength;
 
     bool isJumping;
-
     bool isLookingLeft;
+
+    [Header("Attack", order = 3)]
+    [SerializeField] private AnimationClip attackClip;
+    [SerializeField] private float animationOffSet;
+    [SerializeField] private Collider2D attackCollider;
 
     Rigidbody2D rb;
     Animator anim;
@@ -31,9 +37,11 @@ public class PlayerController : MonoBehaviour
     {
         CheckGround();
         
-        if(lifeState == LifeState.Alive) {
+        if(playerState == PlayerState.Alive) {
             OnMove();
             Jump();
+            
+            OnAttack();
         }
     }
 #region Movementation
@@ -91,7 +99,7 @@ public class PlayerController : MonoBehaviour
     
     void OnDie()
     {
-        lifeState = LifeState.Dead;
+        playerState = PlayerState.Dead;
 
         rb.velocity = Vector2.zero;
         rb.AddForce( new Vector2( (isLookingLeft ? 70 : 70 * -1) * Time.fixedDeltaTime, jumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
@@ -108,4 +116,29 @@ public class PlayerController : MonoBehaviour
             OnDie();
     }
 #endregion
+
+#region Attack
+
+    void OnAttack()
+    {
+        if(Input.GetMouseButtonDown(0))
+            StartCoroutine(Attack());
+    }
+
+    IEnumerator Attack()
+    {
+        playerState = PlayerState.Attacking;
+
+        anim.SetBool("Attacking", true);
+        attackCollider.enabled = true;
+
+        yield return new WaitForSeconds(attackClip.length + animationOffSet);
+
+        attackCollider.enabled = false;
+        anim.SetBool("Attacking", false);
+  
+        playerState = PlayerState.Alive;
+    }
+#endregion
+
 }
