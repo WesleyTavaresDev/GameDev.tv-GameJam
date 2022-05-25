@@ -106,8 +106,6 @@ public class PlayerController : MonoBehaviour
 
         coll.isTrigger = true;
         anim.SetBool("Dead", true);
-
-      //  blackScreen.DOScale(new Vector3(18, 11, 0), 0.1f);
     }
     
     void OnCollisionEnter2D(Collision2D other)
