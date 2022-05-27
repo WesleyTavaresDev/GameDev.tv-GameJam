@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Attack
   - Abism
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1037323787
+    locked: 0
+  - name: Items
+    uniqueID: 3954232505
     locked: 0
   - name: Player
     uniqueID: 114793093

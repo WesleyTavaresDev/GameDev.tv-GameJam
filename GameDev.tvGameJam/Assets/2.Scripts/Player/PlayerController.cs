@@ -5,15 +5,20 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    enum PlayerState {Alive, Attacking,Dead};
+    enum PlayerState {Alive, Attacking, Dead};
+    public delegate void Dead(int pointsLost);
+    public static event Dead dead;
+    
     [Header("Life system", order = 1)]
     [SerializeField] private PlayerState playerState;
     [SerializeField] private Transform blackScreen;
     
     [Header("Movementation", order = 2)]
+    [SerializeField] private GameObject dust;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckLength;
+
 
     bool isJumping;
     bool isLookingLeft;
@@ -22,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationClip attackClip;
     [SerializeField] private float animationOffSet;
     [SerializeField] private Collider2D attackCollider;
+
+    [SerializeField] private AudioSource walkSource;
 
     Rigidbody2D rb;
     Animator anim;
@@ -51,6 +58,14 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime * speed, rb.velocity.y);
+
+        if(horizontal != 0 && !isJumping)
+        {   
+            if(!walkSource.isPlaying)
+                walkSource.Play();
+        }
+
+        dust.SetActive(horizontal != 0 && !isJumping ? true : false);
 
         anim.SetInteger("Movement", (int)rb.velocity.x);
 
@@ -111,8 +126,9 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
-            OnDie();
+            {OnDie(); dead?.Invoke(-5);}
     }
+
 #endregion
 
 #region Attack
