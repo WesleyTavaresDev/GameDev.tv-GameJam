@@ -63,13 +63,16 @@ public class FlyingEnemy : MonoBehaviour
             scale.x = -1;
     */
             
-        if(Mathf.Round(Vector2.Dot(this.transform.position, target)) <= 0)
-            scale.x = 1;
-
-        else if(Mathf.Round(Vector2.Dot(this.transform.position, target)) > 0)
+        if(IsFacingTheSameWay(target))
             scale.x = -1;
-    
+        
+        else if(!IsFacingTheSameWay(target))
+            scale.x = 1;
 
         transform.localScale = scale;
     }
+
+
+    bool IsFacingTheSameWay(Vector2 target) => Mathf.Round(Vector2.Dot(this.transform.position, target)) > 0;
+    
 }
