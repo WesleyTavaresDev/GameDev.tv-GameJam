@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Life system", order = 1)]
     [SerializeField] private PlayerState playerState;
     [SerializeField] private Transform blackScreen;
+    [SerializeField] private LevelController levelController;
     
     [Header("Movementation", order = 2)]
     [SerializeField] private GameObject dust;
@@ -19,17 +19,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundCheckLength;
 
-
     bool isJumping;
     bool isLookingLeft;
 
     [Header("Attack", order = 3)]
     [SerializeField] private AnimationClip attackClip;
-    [SerializeField] private float animationOffSet;
-    [SerializeField] private Collider2D attackCollider;
-
-    [SerializeField] private AudioSource walkSource;
-
+    
     Rigidbody2D rb;
     Animator anim;
     Collider2D coll;
@@ -58,12 +53,6 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime * speed, rb.velocity.y);
-
-        if(horizontal != 0 && !isJumping)
-        {   
-            if(!walkSource.isPlaying)
-                walkSource.Play();
-        }
 
         dust.SetActive(horizontal != 0 && !isJumping ? true : false);
 
@@ -121,6 +110,8 @@ public class PlayerController : MonoBehaviour
 
         coll.isTrigger = true;
         anim.SetBool("Dead", true);
+
+        StartCoroutine(levelController.RestartLevel(2));
     }
     
     void OnCollisionEnter2D(Collision2D other)
@@ -128,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy"))
             {OnDie(); dead?.Invoke(-5);}
     }
+
 
 #endregion
 
@@ -144,14 +136,13 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.Attacking;
 
         anim.SetBool("Attacking", true);
-        attackCollider.enabled = true;
+        rb.velocity = Vector2.zero;
+        
+        yield return new WaitForSeconds(attackClip.length);
 
-        yield return new WaitForSeconds(attackClip.length + animationOffSet);
-
-        attackCollider.enabled = false;
+        playerState = PlayerState.Alive;
         anim.SetBool("Attacking", false);
   
-        playerState = PlayerState.Alive;
     }
 #endregion
 

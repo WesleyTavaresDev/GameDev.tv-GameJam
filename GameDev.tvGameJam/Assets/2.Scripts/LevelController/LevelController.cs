@@ -9,10 +9,7 @@ public class LevelController : MonoBehaviour
 
     void Start() => transition.Fade(1.5f, 0);
 
-    void ChangeLevel(int sceneIndex)
-    {
-        StartCoroutine(LevelChanger(sceneIndex));
-    }
+    void ChangeLevel(int sceneIndex) => StartCoroutine(LevelChanger(sceneIndex));
 
     IEnumerator LevelChanger(int sceneIndex)
     {
@@ -22,6 +19,13 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(transition.EffectTime);
         
         operation.allowSceneActivation = true;
+    }
+
+    public IEnumerator RestartLevel(int timeToRestart)
+    {
+        yield return new WaitForSeconds(timeToRestart);
+
+        ChangeLevel(SceneManager.GetActiveScene().buildIndex);
     }
 
     void OnEnable() => LevelGate.changeLevel += ChangeLevel;

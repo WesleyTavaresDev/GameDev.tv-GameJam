@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     [SerializeField] private float distance;
+    [SerializeField] private GameObject enemyReward;
+    [Range(0, 20)] [SerializeField] private int rewardNumber;
 
     Rigidbody2D rb;
     Animator anim;
@@ -21,7 +23,6 @@ public class EnemyDeath : MonoBehaviour
 
         if(ray.collider != null)   
         {
-            Debug.Log("Vou esquecer, não to bricando não");
             anim.SetBool("Dead", true);
             GetComponent<Collider2D>().enabled = false;
         }
@@ -30,8 +31,13 @@ public class EnemyDeath : MonoBehaviour
     void knockout()
     {
         rb.AddForce(new Vector2((transform.localScale.x > 0 ? 50 : 50 * -1) * Time.fixedDeltaTime, 200 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+        
+        if(enemyReward != null)            
+        {
+            for(int i = 0; i < rewardNumber; i++)
+                Instantiate(enemyReward, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        }
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {

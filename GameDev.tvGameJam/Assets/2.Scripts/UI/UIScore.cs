@@ -18,7 +18,9 @@ public class UIScore : MonoBehaviour
     void UpdateScore(int value)
     {
         score += value;
-
+        if( score < 0)
+            score = 0;
+        
         totalScore = score;
         SetScore();
 
