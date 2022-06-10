@@ -7,6 +7,7 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private float distance;
     [SerializeField] private GameObject enemyReward;
     [Range(0, 20)] [SerializeField] private int rewardNumber;
+    [SerializeField] private Vector2 knockbackForce;
 
     Rigidbody2D rb;
     Animator anim;
@@ -28,9 +29,9 @@ public class EnemyDeath : MonoBehaviour
         }
     }
 
-    void knockout()
+    void Knockback()
     {
-        rb.AddForce(new Vector2((transform.localScale.x > 0 ? 50 : 50 * -1) * Time.fixedDeltaTime, 200 * Time.fixedDeltaTime), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2((transform.localScale.x > 0 ? knockbackForce.x : knockbackForce.x * -1) * Time.fixedDeltaTime, knockbackForce.y * Time.fixedDeltaTime), ForceMode2D.Impulse);
         
         if(enemyReward != null)            
         {
@@ -44,8 +45,6 @@ public class EnemyDeath : MonoBehaviour
         if(other.gameObject.CompareTag("Abism"))
             Destroy(this.gameObject);
     }
-
-
 
     Vector2 GetDirection()
     {
