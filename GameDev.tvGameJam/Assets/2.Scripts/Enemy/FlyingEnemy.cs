@@ -10,9 +10,9 @@ public class FlyingEnemy : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float triggerDistance;
-    Vector3 startPos;
 
-    Animator anim;
+    private Vector3 startPos;
+    private Animator anim;
 
     void Start()
     {
@@ -32,16 +32,15 @@ public class FlyingEnemy : MonoBehaviour
                     Fly(startPos);
 
                 anim.SetBool("Attacking", false);
-            break;
-            
+                    break;
+
             case EnemyState.Flying:
                 Fly(player.transform.position);
                 Flip(player.transform.position);
 
                 anim.SetBool("Attacking", IsTargetClose(player.transform.position, triggerDistance / 1.5f) ? true : false );
-            break;
+                    break;
         }
-
     }
 
     void ChangeState() => enemyState = IsTargetClose(player.transform.position, triggerDistance) ? EnemyState.Flying : EnemyState.Idle;

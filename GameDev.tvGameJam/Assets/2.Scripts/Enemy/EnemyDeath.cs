@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     [SerializeField] private float distance;
+
     [SerializeField] private GameObject enemyReward;
     [Range(0, 20)] [SerializeField] private int rewardNumber;
-    [SerializeField] private Vector2 knockbackForce;
 
     Rigidbody2D rb;
     Animator anim;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,10 +30,8 @@ public class EnemyDeath : MonoBehaviour
         }
     }
 
-    void Knockback()
+    void EnemyReward()
     {
-        rb.AddForce(new Vector2((transform.localScale.x > 0 ? knockbackForce.x : knockbackForce.x * -1) * Time.fixedDeltaTime, knockbackForce.y * Time.fixedDeltaTime), ForceMode2D.Impulse);
-        
         if(enemyReward != null)            
         {
             for(int i = 0; i < rewardNumber; i++)
