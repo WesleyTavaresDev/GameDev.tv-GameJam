@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0.4
   enemyReward: {fileID: 2986505507344963590, guid: 496c2e5a41525624dbba54a053129f0d, type: 3}
-  rewardNumber: 2
+  rewardNumber: 1
 --- !u!114 &3312535431213901372
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class FlyingEnemy : MonoBehaviour
                 Fly(player.transform.position);
                 Flip(player.transform.position);
 
-                anim.SetBool("Attacking", IsTargetClose(player.transform.position, triggerDistance / 1.5f) ? true : false );
+                anim.SetBool("Attacking", IsTargetClose(player.transform.position, triggerDistance / 2f) ? true : false );
                     break;
         }
     }

@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
 
         anim.SetInteger("Movement", (int)rb.velocity.x);
 
-        if(horizontal > 0 && isLookingLeft)
+        if(horizontal > 0 && isLookingLeft && playerState == PlayerState.Alive)
             Flip();
-        else if (horizontal < 0 && !isLookingLeft)
+        else if (horizontal < 0 && !isLookingLeft && playerState == PlayerState.Alive)
             Flip();
     }
 
