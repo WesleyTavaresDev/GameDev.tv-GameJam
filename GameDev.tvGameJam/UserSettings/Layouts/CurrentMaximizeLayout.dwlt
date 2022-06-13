@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 5658
+  controlID: 6672
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5659
+  controlID: 6673
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 5660
+  controlID: 6674
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 43
+  controlID: 6829
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: AnimatorControllerTool
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -149,14 +149,14 @@ MonoBehaviour:
     y: 0
     width: 857
     height: 309
-  m_MinSize: {x: 200, y: 200}
+  m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 7}
+  m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 7}
   - {fileID: 8}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -507,7 +507,7 @@ MonoBehaviour:
     x: 0
     y: 73
     width: 856
-    height: 333
+    height: 288
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -521,6 +521,7 @@ MonoBehaviour:
     - {fileID: -2499733078249240755, guid: 21f9490490778b44c9c4f10dd4c921c6, type: 2}
     - {fileID: -1687943029778105440, guid: 74e70d95d1401f54ca6e8576a06f2b21, type: 2}
     - {fileID: 400313341139341451, guid: 2a0790be265575d4d8e8c031c3d613ff, type: 2}
+    - {fileID: -690373615788208510, guid: f6c661b532772e14d940b77153c4e262, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.48847362
       e01: 0
@@ -545,7 +546,7 @@ MonoBehaviour:
       e10: 0
       e11: 0.52526313
       e12: 0
-      e13: 89.221054
+      e13: 66.721054
       e20: 0
       e21: 0
       e22: 1
@@ -625,7 +626,23 @@ MonoBehaviour:
       e10: 0
       e11: 0.67432433
       e12: 0
-      e13: 93.054054
+      e13: 70.554054
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.52526313
+      e01: 0
+      e02: 0
+      e03: -11.263153
+      e10: 0
+      e11: 0.52526313
+      e12: 0
+      e13: 98.23685
       e20: 0
       e21: 0
       e22: 1
@@ -635,9 +652,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 2a0790be265575d4d8e8c031c3d613ff, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: f6c661b532772e14d940b77153c4e262, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 400313341139341451, guid: 2a0790be265575d4d8e8c031c3d613ff, type: 2}
+  - m_Target: {fileID: -690373615788208510, guid: f6c661b532772e14d940b77153c4e262, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -707,8 +724,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 68c6ffff
-      m_LastClickedID: -14744
+      m_SelectedIDs: 14ceffff
+      m_LastClickedID: -12780
       m_ExpandedIDs: b6c6ffff14ceffff24ecffffdcf1ffffe8f2ffffe4f3ffffd0f4ffff12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -757,7 +774,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 5661
+  controlID: 6675
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -973,7 +990,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/1.Sprites/Enemies/Piranha Plant
+    - Assets/4.Animations/PiranhaPlant
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -988,7 +1005,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 80610000
     m_LastClickedID: 24960
-    m_ExpandedIDs: 00000000466200004a6400004c6400004e64000050640000526400005464000056640000586400005a6400005c6400005e64000060640000626400006464000066640000686400006a6400006c6400006e64000070640000726400007464000076640000786400007a640000
+    m_ExpandedIDs: ffffffff00000000466200004a6400004c6400004e64000050640000526400005464000056640000586400005a6400005c6400005e64000060640000626400006464000066640000686400006a6400006c640000706400007264000076640000786400007a640000c2640000da640000fc64000086900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1013,24 +1030,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 128}
-    m_SelectedIDs: 68c6ffff
+    scrollPos: {x: 0, y: 420}
+    m_SelectedIDs: 14ceffff
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000466200004a6400004c6400004e64000050640000526400005464000056640000586400005a6400005c6400005e64000060640000626400006464000066640000686400006a6400006c640000706400007264000076640000786400007a640000c2640000da640000fc64000086900000
+    m_ExpandedIDs: ffffffff00000000466200004a6400004c64000050640000526400005464000056640000586400005a6400005c640000626400006464000066640000686400006a640000706400007264000076640000786400007a640000da640000f0640000fc640000e2900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: piranha-plant2
-      m_OriginalName: piranha-plant2
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 37016
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 15}
     m_SearchString: 
@@ -1041,8 +1058,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 68c6ffff
-    m_LastClickedInstanceID: -14744
+    m_SelectedInstanceIDs: 14ceffff
+    m_LastClickedInstanceID: -12780
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300001a65000076610000
     m_RenameOverlay:
