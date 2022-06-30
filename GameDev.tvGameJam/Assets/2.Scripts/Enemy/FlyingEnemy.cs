@@ -30,13 +30,12 @@ public class FlyingEnemy : MonoBehaviour
                 Flip(startPos);
                 if(this.transform.position != startPos)    
                     Fly(startPos);
-
                 anim.SetBool("Attacking", false);
                     break;
 
             case EnemyState.Flying:
-                Fly(player.transform.position);
                 Flip(player.transform.position);
+                Fly(player.transform.position);
 
                 anim.SetBool("Attacking", IsTargetClose(player.transform.position, triggerDistance / 2f) ? true : false );
                     break;
@@ -53,10 +52,10 @@ public class FlyingEnemy : MonoBehaviour
             enemyState = EnemyState.Idle;
     }
 
-    void Flip(Vector2 target) => transform.localScale = new Vector2((IsFacingTheSameWay(target) ? -1 : 1), transform.localScale.y);
-    
+    void Flip(Vector2 target) => transform.localScale = new Vector2((IsFacingTheSameWay(target) ? 1 : -1), transform.localScale.y);
+    void Test_Flip(Vector2 target) => transform.localScale = new Vector2(transform.localScale.x * )
     bool IsTargetClose(Vector2 target, float distance) => Vector2.Distance(player.transform.position, this.gameObject.transform.position) <= distance;
     
-    bool IsFacingTheSameWay(Vector2 target) => Mathf.Round(Vector2.Dot(this.transform.position, target)) > 0;
+    bool IsFacingTheSameWay(Vector2 target) => Mathf.Round(Vector2.Dot(this.transform.position, target)) >= 0;
     
 }
